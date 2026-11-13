@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 2,
+  "currentStage": "completed_draft",
+  "lastCommittedChapter": 7,
+  "activeChapter": null,
+  "lastReviewedChapter": null,
+  "completedChapters": [1, 2, 3, 4, 5, 6, 7],
+  "factLedgerCoveredThrough": 7,
+  "latestOutlineFile": "outlines/outline-004-007.md",
+  "outlineFiles": ["outlines/outline-001-003.md", "outlines/outline-004-007.md"],
+  "lastFactUpdate": "ch007",
+  "pendingIssues": [
+    "妻子姓名与正面出场尚未设计（全文始终未正面出场）",
+    "沈知行之子姓名尚未设计",
+    "路人遇害者姓名/身份未定",
+    "苏晴、周老在第3章之后的真实（非镜中）后续状态均未交代，若需续写下一阶段故事需补充",
+    "林野的裂镜来源、他见过的'更难受的东西'具体内容、他所说'接下来会更难'的具体路径，均为留白，是续写下一阶段故事的主要入口",
+    "全书在第7章结尾收在悬念处，沈知行尚未对林野的提议做出回应"
+  ]
+}

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>《如果》场景示意图 - 逐场景玩法速览</title>
+<style>
+  :root{
+    --bg:#ffffff; --bg2:#f1efe8; --text:#2c2c2a; --text2:#5f5e5a; --text3:#888780;
+    --border:#d3d1c7; --radius:12px;
+    --gray-50:#f1efe8; --gray-600:#5f5e5a; --gray-800:#444441;
+    --blue-50:#e6f1fb; --blue-600:#185fa5; --blue-800:#0c447c;
+    --purple-50:#eeedfe; --purple-600:#534ab7; --purple-800:#3c3489;
+    --amber-50:#faeeda; --amber-600:#854f0b; --amber-800:#633806;
+    --coral-50:#faece7; --coral-600:#993c1d; --coral-800:#712b13;
+    --teal-50:#e1f5ee; --teal-600:#0f6e56;
+  }
+  *{box-sizing:border-box}
+  body{font-family:"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg2);color:var(--text);margin:0;padding:0 0 4rem;line-height:1.6}
+  header{background:var(--bg);border-bottom:0.5px solid var(--border);padding:1.5rem 2rem;position:sticky;top:0;z-index:10}
+  header h1{font-size:18px;font-weight:500;margin:0 0 4px}
+  header p{font-size:13px;color:var(--text2);margin:0}
+  nav{display:flex;flex-wrap:wrap;gap:8px;padding:1rem 2rem;background:var(--bg)}
+  nav a{font-size:12px;color:var(--blue-600);text-decoration:none;border:0.5px solid var(--border);border-radius:999px;padding:4px 12px;background:var(--blue-50)}
+  main{max-width:1180px;margin:0 auto;padding:0 2rem}
+  section.chapter{margin-top:2.5rem}
+  section.chapter h2{font-size:16px;font-weight:500;border-left:4px solid var(--purple-600);padding-left:10px;margin-bottom:1rem}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px}
+  .card{background:var(--bg);border:0.5px solid var(--border);border-radius:var(--radius);padding:1rem 1.1rem;display:flex;flex-direction:column;gap:10px}
+  .tagrow{display:flex;justify-content:space-between;align-items:center}
+  .nodeid{font-size:12px;color:var(--text3);font-family:monospace}
+  .type{font-size:11px;padding:2px 8px;border-radius:999px;font-weight:500}
+  .type.narrative{background:var(--gray-50);color:var(--gray-800)}
+  .type.flavor{background:var(--blue-50);color:var(--blue-800)}
+  .type.mirror{background:var(--purple-50);color:var(--purple-800)}
+  .type.cost{background:var(--amber-50);color:var(--amber-800)}
+  .type.branch{background:var(--coral-50);color:var(--coral-800)}
+  .scenetitle{font-size:14px;font-weight:500;margin:0}
+  .screen{background:var(--gray-50);border:0.5px solid var(--border);border-radius:8px;padding:10px;font-size:12.5px;color:var(--text)}
+  .screen .quote{color:var(--text2);font-style:normal}
+  .interact{display:flex;gap:8px;flex-wrap:wrap}
+  .btn{flex:1;min-width:90px;text-align:center;font-size:12px;border:0.5px solid var(--border);border-radius:8px;padding:8px 6px;background:var(--bg)}
+  .btn.primary{background:var(--purple-50);border-color:var(--purple-600);color:var(--purple-800);font-weight:500}
+  .btn.branchA{background:var(--teal-50);border-color:var(--teal-600);color:var(--teal-600);font-weight:500}
+  .btn.branchB{background:var(--coral-50);border-color:var(--coral-600);color:var(--coral-600);font-weight:500}
+  .compare{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .compare div{background:var(--bg);border:0.5px solid var(--border);border-radius:8px;padding:8px;font-size:11.5px}
+  .compare .real{color:var(--coral-800)}
+  .compare .ifline{color:var(--teal-600)}
+  .tally{font-size:11.5px;color:var(--amber-800);background:var(--amber-50);border-radius:8px;padding:6px 8px}
+  .footer{font-size:11px;color:var(--text3);display:flex;justify-content:space-between;border-top:0.5px dashed var(--border);padding-top:6px}
+  .footer .next{color:var(--blue-600)}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>《如果》逐场景示意图 — 每个场景的内容 / 玩法 / 交互一览</h1>
+  <p>依据《如果-剧情策划案.md》v0.1 绘制，共24个节点（22场景 + 2结局）。低保真示意，仅用于沟通玩法逻辑，非最终美术稿。</p>
+</header>
+
+<nav>
+  <a href="#ch1">第1章 我没有错</a>
+  <a href="#ch2">第2章 必要的牺牲</a>
+  <a href="#ch3">第3章 赢家的勋章</a>
+  <a href="#ch4">第4章 如果（镜1）</a>
+  <a href="#ch5">第5章 代价（镜2）</a>
+  <a href="#ch6">第6章 慢一点的代价（镜3）</a>
+  <a href="#ch7">第7章 过来人 + 结局</a>
+</nav>
+
+<main>
+
+<section class="chapter" id="ch1">
+<h2>第1章 我没有错 — 伪选择点 C1 C2 C3，走向事故</h2>
+<div class="grid">
+
+  <div class="card">
+    <div class="tagrow"><span class="nodeid">S1-1</span><span class="type flavor">伪选择点 C1</span></div>
+    <p class="scenetitle">测试部·深夜</p>
+    <div class="screen">林野："大雨天，系统有极小概率认错路人。"<br><span class="quote">沈知行："先别发到全公司群里…我们俩盯着就行。"</span></div>
+    <div class="interact">
+      <div class="btn">A 先缓一缓</div>
+      <div class="btn">B 现在就说</div>
+    </div>
+    <div class="footer"><span>记录 choice_flavor_C1（不改主线）</span><span class="next">→ S1-2</span></div>
+  </div>
+
+  <div class="card">
+    <div class="tagrow"><span class="nodeid">S1-2</span><span class="type flavor">伪选择点 C2</span></div>
+    <p class="scenetitle">第二天</p>
+    <div class="screen">问题没再出现。<br><span class="quote">沈知行："加一道人工巡检，这周先这样顶过去。"</span></div>
+    <div class="interact">
+      <div class="btn">A 先缓一缓</div>
+      <div class="btn">B 现在就说</div>
+    </div>
+    <div class="footer"><span>记录 choice_flavor_C2</span><span class="next">→ S1-3</span></div>
+  </div>
+
+  <div class="card">
+    <div class="tagrow"><span class="nodeid">S1-3</span><span class="type flavor">伪选择点 C3</span></div>
+    <p class="scenetitle">投资人来访前夜</p>
+    <div class="screen">工程师报新异常。<br><span class="quote">沈知行："先别报群里，等演示完再处理。"</span></div>
+    <div class="interact">
+      <div class="btn">A 先缓一缓</div>
+      <div class="btn">B 现在就说</div>
+    </div>
+    <div class="footer"><span>记录 choice_flavor_C3</span><span class="next">→ S1-4</span></div>
+  </div>
+
+  <div class="card">
+    <div class="tagrow"><span class="nodeid">S1-4</span><span class="type cost">代价结算</span></div>
+    <p class="scenetitle">演示当天事故</p>
+    <div class="screen">测试车撞人，行人死亡。<br><span class="quote">"我每一次都只是选了先缓一缓，加起来死了一个人。"</span></div>
+    <div class="tally">代价清单首次出现：☑ 死了一个人</div>
+    <div class="interact"><div class="btn primary">继续 →</div></div>
+    <div class="footer"><span>cost_tally += "死了一个人"</span><span class="next">→ S2-1</span></div>
+  </div>
+
+</div>
+</section>
+
+<section class="chapter" id="ch2">
+<h2>第2章 必要的牺牲 — 伪选择点 C4 C5 C6，代价累加</h2>
+<div class="grid">
+
+  <div class="card">
+    <div class="tagrow"><span class="nodeid">S2-1</span><span class="type flavor">伪选择点 C4</span></div>
+    <p class="scenetitle">事故调查组会议室</p>
+    <div class="screen">调查组质问报告是谁压下的；苏晴看了沈知行一眼。<br><span class="quote">沈知行没有说话。</span></div>
+    <div class="interact">
+      <div class="btn">A 保持沉默</div>
+      <div class="btn">B 想替她担下</div>
+    </div>
+    <div class="footer"><span>记录 choice_flavor_C4（B仅触发内心独白，仍回到A现实）</span><span class="next">→ S2-2</span></div>
+  </div>
+
+  <div class="card">
+    <div class="tagrow"><span class="nodeid">S2-2</span><span class="type flavor">伪选择点 C5</span></div>
+    <p class="scenetitle">苏晴办公室</p>
+    <div class="screen">苏晴："算我一个人的责任。"<br><span class="quote">沈知行话说到一半，没说完。苏晴记过辞职。</span></div>
+    <div class="interact">
+      <div class="btn">A 保持沉默</div>
+      <div class="btn">B 想说出口</div>
+    </div>
+    <div class="tally">代价清单追加：☑ 毁了苏晴的前程</div>
+    <div class="footer"><span>cost_tally += "毁了苏晴的前程"</span><span class="next">→ S2-3</span></div>
+  </div>
+
+  <div class="card">
+    <div class="tagrow"><span class="nodeid">S2-3</span><span class="type flavor">伪选择点 C6</span></div>
+    <p class="scenetitle">医院走廊</p>
+    <div class="screen">妻子临产连环来电。<br><span class="quote">沈知行："开完这个会马上过去。" 赶到时孩子已抱出产房。</span></div>
+    <div class="interact">
+      <div class="btn">A 开完会再去</div>
+      <div class="btn">B 现在就走</div>
+    </div>
+    <div class="tally">代价清单追加：☑ 错过了孩子出生的那一刻</div>
+    <div class="footer"><span>cost_tally += "错过孩子出生"</span><span class="next">→ S3-1</span></div>
+  </div>
+
+</div>
+</section>
+
+<section class="chapter" id="ch3">
+<h2>第3章 赢家的勋章 — 伪选择点 C7，庆功宴获镜</h2>
+<div class="grid">
+
+  <div class="card">
+    <div class="tagrow"><span class="nodeid">S3-1</span><span class="type flavor">伪选择点 C7</span></div>
+    <p class="scenetitle">董事会投票前</p>
+    <div class="screen">周老："那就是还会死人。"<br><span class="quote">沈知行："这道题，谁都不想做，但总要有人做。" 表决通过全国铺开。</span></div>
+    <div class="interact">
+      <div class="btn">A 推动表决</div>
+      <div class="btn">B 要求暂停</div>
+    </div>
+    <div class="footer"><span>记录 choice_flavor_C7</span><span class="next">→ S3-2</span></div>
+  </div>
+
+  <div class="card">
+    <div class="tagrow"><span class="nodeid">S3-2</span><span class="type cost">代价结算</span></div>
+    <p class="scenetitle">庆功宴</p>
+    <div class="screen">香槟、闪光灯；沈知行默数七次"就这一次"。<br><span class="quote">口袋里，多了一面裂了缝的旧镜子。</span></div>
+    <div class="tally">代价清单汇总摊牌：☑ 死1人 ☑ 毁前程 ☑ 错过那一刻 → 获得道具：裂镜</div>
+    <div class="interact"><div class="btn primary">继续 →</div></div>
+    <div class="footer"><span>mirror_item = true</span><span class="next">→ S4-1</span></div>
+  </div>
+
+</div>
+</section>
+
+<section class="chapter" id="ch4">
+<h2>第4章 如果（镜像回放1：取反 C1）</h2>
+<div class="grid">
+
+  <div class="card">
+    <div class="tagrow"><span class="nodeid">S4-1</span><span class="type narrative">叙事</span></div>
+    <p class="scenetitle">庆功宴后·深夜</p>
+    <div class="screen">发现裂镜，镜面亮起，被拽入记忆。</div>
+    <div class="interact"><div class="btn">继续 →</div></div>
+    <div class="footer"><span>—</span><span class="next">→ S4-2</span></div>
+  </div>
+
+  <div class="card">
+    <div class="tagrow"><span class="nodeid">S4-2</span><span class="type mirror">镜像强制点</span></div>
+    <p class="scenetitle">测试部深夜（重现）</p>
+    <div class="screen"><span class="quote">镜中沈知行："发到群里。所有人都要知道。明天，演示停。"</span></div>
+    <div class="interact"><div class="btn primary">确认：这次，换一条路</div></div>
+    <div class="footer"><span>mirror_path = 1_active</span><span class="next">→ S4-3</span></div>
+  </div>
+
+  <div class="card">
+    <div class="tagrow"><span class="nodeid">S4-3</span><span class="type narrative">叙事</span></div>
+    <p class="scenetitle">投资人办公室</p>
+    <div class="screen">投资人翻脸摔合同；三名核心工程师辞职；公司只剩两月现金。</div>
+    <div class="interact"><div class="btn">继续 →</div></div>
+    <div class="footer"><span>—</span><span class="next">→ S4-4</span></div>
+  </div>
+
+  <div class="card">
+    <div class="tagrow"><span class="nodeid">S4-4</span><span class="type cost">代价结算·对照①</span></div>
+    <p class="scenetitle">三个月后·小办公室</p>
+    <div class="screen">只剩八人；新投资人给小笔钱；镜中沈知行写下"慢一点，但活着"。无人死亡。</div>
+    <div class="compare">
+      <div class="real">真实的代价<br>死1人 / 毁前程 / 错过那一刻</div>
+      <div class="ifline">如果的代价<br>公司濒临破产 / 无人死亡</div>
+    </div>
+    <div class="interact"><div class="btn primary">继续 →</div></div>
+    <div class="footer"><span>mirror_memory_count = 1</span><span class="next">→ S5-1</span></div>
+  </div>
+
+</div>
+</section>
+
+<section class="chapter" id="ch5">
+<h2>第5章 代价（镜像回放2：取反 C4+C5+C6）</h2>
+<div class="grid">
+
+  <div class="card">
+    <div class="tagrow"><span class="nodeid">S5-1</span><span class="type mirror">镜像强制点</span></div>
+    <p class="scenetitle">调查组会议室（重现）</p>
+    <div class="screen"><span class="quote">镜中沈知行："是我。苏晴只是照我说的做。"</span></div>
+    <div class="interact"><div class="btn primary">确认：这次，换一条路</div></div>
+    <div class="footer"><span>mirror_path = 2_active</span><span class="next">→ S5-2</span></div>
+  </div>
+
+  <div class="card">
+    <div class="tagrow"><span class="nodeid">S5-2</span><span class="type narrative">叙事</span></div>
+    <p class="scenetitle">罢免表决</p>
+    <div class="screen">董事会当场表决罢免；四票赞成一票反对；交出工牌。</div>
+    <div class="interact"><div class="btn">继续 →</div></div>
+    <div class="footer"><span>—</span><span class="next">→ S5-3</span></div>
+  </div>
+
+  <div class="card">
+    <div class="tagrow"><span class="nodeid">S5-3</span><span class="type cost">代价结算·对照②</span></div>
+    <p class="scenetitle">医院走廊·同一夜</p>
+    <div class="screen">电话响，镜中沈知行（已非CEO）立刻赶到，站在产房门口第一位。</div>
+    <div class="compare">
+      <div class="real">真实的代价<br>错过孩子出生的那一刻</div>
+      <div class="ifline">如果的代价<br>丢了公司 / 站在产房门口</div>
+    </div>
+    <div class="interact"><div class="btn primary">继续 →</div></div>
+    <div class="footer"><span>mirror_memory_count = 2</span><span class="next">→ S6-1</span></div>
+  </div>
+
+</div>
+</section>
+
+<section class="chapter" id="ch6">
+<h2>第6章 慢一点的代价（镜像回放3：取反 C7）</h2>
+<div class="grid">
+
+  <div class="card">
+    <div class="tagrow"><span class="nodeid">S6-1</span><span class="type mirror">镜像强制点</span></div>
+    <p class="scenetitle">董事会深夜（重现）</p>
+    <div class="screen"><span class="quote">镜中沈知行："那就再等。"</span></div>
+    <div class="interact"><div class="btn primary">确认：这次，换一条路</div></div>
+    <div class="footer"><span>mirror_path = 3_active</span><span class="next">→ S6-2</span></div>
+  </div>
+
+  <div class="card">
+    <div class="tagrow"><span class="nodeid">S6-2</span><span class="type narrative">叙事</span></div>
+    <p class="scenetitle">表决未通过</p>
+    <div class="screen">三票反对两票支持，延迟方案未通过；全国铺开仍连夜启动。</div>
+    <div class="interact"><div class="btn">继续 →</div></div>
+    <div class="footer"><span>—</span><span class="next">→ S6-3</span></div>
+  </div>
+
+  <div class="card">
+    <div class="tagrow"><span class="nodeid">S6-3</span><span class="type cost">代价结算·对照③</span></div>
+    <p class="scenetitle">一年后</p>
+    <div class="screen">无死亡消息（新接手人偷偷拖延上线直到隐患修完）；镜中沈知行辞职，什么荣誉都没留下。</div>
+    <div class="compare">
+      <div class="real">对的决定不保证结果</div>
+      <div class="ifline">唯一保证：不再按下那个按钮</div>
+    </div>
+    <div class="interact"><div class="btn primary">继续 →</div></div>
+    <div class="footer"><span>mirror_memory_count = 3（三段收集完毕）</span><span class="next">→ S7-1</span></div>
+  </div>
+
+</div>
+</section>
+
+<section class="chapter" id="ch7">
+<h2>第7章 过来人 — 收束 + 全剧唯一真分支</h2>
+<div class="grid">
+
+  <div class="card">
+    <div class="tagrow"><span class="nodeid">S7-1</span><span class="type narrative">叙事</span></div>
+    <p class="scenetitle">镜子碎裂</p>
+    <div class="screen">裂镜灭了碎在地上；沈知行独白三次"如果"都不轻松；辞职搬出写字楼。</div>
+    <div class="interact"><div class="btn">继续 →</div></div>
+    <div class="footer"><span>—</span><span class="next">→ S7-2</span></div>
+  </div>
+
+  <div class="card">
+    <div class="tagrow"><span class="nodeid">S7-2</span><span class="type narrative">叙事</span></div>
+    <p class="scenetitle">半年后·出租屋</p>
+    <div class="screen">敲门，是林野，手持同款裂镜。<br><span class="quote">林野："这次你不用一个人扛。"</span></div>
+    <div class="interact"><div class="btn">继续 →</div></div>
+    <div class="footer"><span>—</span><span class="next">→ S7-3</span></div>
+  </div>
+
+  <div class="card">
+    <div class="tagrow"><span class="nodeid">S7-3</span><span class="type branch">真分支点</span></div>
+    <p class="scenetitle">全剧唯一自由选择</p>
+    <div class="screen">系统提问："要不要把这七次如果，说给她听？"</div>
+    <div class="interact">
+      <div class="btn branchA">说出真相</div>
+      <div class="btn branchB">不说真相</div>
+    </div>
+    <div class="footer"><span>ending_branch = A_reveal / B_silence</span><span class="next">→ EndingA / EndingB</span></div>
+  </div>
+
+  <div class="card">
+    <div class="tagrow"><span class="nodeid">EndingA</span><span class="type branch">结局·落幕</span></div>
+    <p class="scenetitle">说出真相</p>
+    <div class="screen">说出"是我让苏晴压的"，决定去找苏晴当面说清；与林野合写内部风控复盘。</div>
+    <div class="interact"><div class="btn branchA">查看落幕文案</div></div>
+    <div class="footer"><span>情感基调：释然但不圆满</span><span class="next">流程结束</span></div>
+  </div>
+
+  <div class="card">
+    <div class="tagrow"><span class="nodeid">EndingB</span><span class="type branch">结局·落幕</span></div>
+    <p class="scenetitle">不说真相</p>
+    <div class="screen">没有说出口，独自远走；镜子残片被收进抽屉未扔；多年后匿名寄出裂镜笔记。</div>
+    <div class="interact"><div class="btn branchB">查看落幕文案</div></div>
+    <div class="footer"><span>情感基调：留白、克制的遗憾</span><span class="next">流程结束</span></div>
+  </div>
+
+</div>
+</section>
+
+</main>
+</body>
+</html>
