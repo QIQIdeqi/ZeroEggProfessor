@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>《如果》主界面线框图</title>
+<style>
+  :root{
+    --bg2:#f1efe8; --text:#2c2c2a; --text2:#5f5e5a; --text3:#888780;
+    --border:#d3d1c7; --radius:12px;
+    --purple-50:#eeedfe; --purple-600:#534ab7; --purple-800:#3c3489;
+    --blue-50:#e6f1fb; --blue-600:#185fa5; --blue-800:#0c447c;
+    --coral-50:#faece7; --coral-600:#993c1d;
+    --amber-50:#faeeda; --amber-600:#854f0b;
+  }
+  *{box-sizing:border-box}
+  body{font-family:"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg2);color:var(--text);margin:0;padding:2rem;line-height:1.6}
+  h1{font-size:16px;font-weight:500;margin:0 0 4px}
+  p.sub{font-size:13px;color:var(--text2);margin:0 0 1.5rem}
+  .layout{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:1100px;margin:0 auto}
+  .frame{background:#1b1a2e;border-radius:var(--radius);border:0.5px solid var(--border);aspect-ratio:16/9;position:relative;overflow:hidden;display:flex;align-items:center;padding:0 40px}
+  .mirror{position:absolute;right:60px;top:30%;width:70px;height:90px;border:2px solid #9b8ff0;border-radius:8px;opacity:0.5;box-shadow:0 0 18px 4px rgba(155,143,240,0.35)}
+  .mirror::after{content:"";position:absolute;top:10%;left:45%;width:2px;height:80%;background:#c9c0ff;transform:rotate(8deg)}
+  .titletext{position:absolute;top:28px;left:40px;color:#eceaff;font-size:15px;font-weight:500;letter-spacing:2px}
+  .menu{display:flex;flex-direction:column;gap:12px;z-index:2}
+  .menubtn{width:160px;padding:10px 16px;font-size:13px;color:#eceaff;border:0.5px solid rgba(255,255,255,0.35);border-radius:8px;background:rgba(255,255,255,0.06);text-align:left}
+  .menubtn.disabled{opacity:0.35;color:#9a97b5}
+  .menubtn .tag{display:block;font-size:11px;color:#b9b2f2;margin-top:2px}
+  .caption{font-size:12px;color:var(--text2);text-align:center;margin-top:8px}
+  .panelcard{background:#fff;border:0.5px solid var(--border);border-radius:var(--radius);padding:1rem 1.2rem}
+  .panelcard h3{font-size:13px;font-weight:500;margin:0 0 10px;border-left:3px solid var(--purple-600);padding-left:8px}
+  .row{display:flex;justify-content:space-between;align-items:center;font-size:12.5px;padding:6px 0;border-bottom:0.5px dashed var(--border)}
+  .row:last-child{border-bottom:none}
+  .ctrl{font-size:11px;color:var(--text3)}
+  .slider{width:110px;height:6px;background:var(--purple-50);border-radius:999px;position:relative}
+  .slider .fill{position:absolute;left:0;top:0;height:100%;background:var(--purple-600);border-radius:999px}
+  .radio3{display:flex;gap:6px}
+  .radio3 span{font-size:11px;padding:2px 8px;border-radius:999px;border:0.5px solid var(--border);color:var(--text2)}
+  .radio3 span.on{background:var(--purple-50);border-color:var(--purple-600);color:var(--purple-800);font-weight:500}
+  .dialog{background:#fff;border:0.5px solid var(--border);border-radius:var(--radius);padding:14px 16px;max-width:260px}
+  .dialog p{font-size:12.5px;margin:0 0 10px}
+  .dialogbtns{display:flex;gap:8px;justify-content:flex-end}
+  .dbtn{font-size:12px;padding:6px 12px;border-radius:8px;border:0.5px solid var(--border);background:#fff}
+  .dbtn.primary{background:var(--purple-50);border-color:var(--purple-600);color:var(--purple-800);font-weight:500}
+  .sectiontitle{font-size:14px;font-weight:500;margin:1.8rem 0 10px;grid-column:1 / -1;border-left:4px solid var(--purple-600);padding-left:10px}
+  .flowrow{grid-column:1/-1;display:flex;gap:10px;flex-wrap:wrap;align-items:center;font-size:12px;color:var(--text2)}
+  .fnode{padding:6px 12px;border-radius:999px;border:0.5px solid var(--border);background:#fff}
+  .fnode.purple{background:var(--purple-50);border-color:var(--purple-600);color:var(--purple-800)}
+  .fnode.coral{background:var(--coral-50);border-color:var(--coral-600);color:var(--coral-600)}
+  .arrow{color:var(--text3)}
+</style>
+</head>
+<body>
+
+<h1>《如果》主界面线框图 — 低保真交互原型</h1>
+<p class="sub">依据《如果-主界面交互设计案.md》绘制，展示四按钮主界面、设置浮层与两处二次确认弹窗，非最终美术稿。</p>
+
+<div class="layout">
+
+  <div class="sectiontitle">主界面默认态（Idle）</div>
+  <div class="frame" style="grid-column:1/-1">
+    <div class="titletext">如果（暂定名）</div>
+    <div class="mirror"></div>
+    <div class="menu">
+      <div class="menubtn">开始游戏<span class="tag">始终可点击，有存档时二次确认覆盖</span></div>
+      <div class="menubtn disabled">继续游戏<span class="tag">无存档时置灰(disabled)，不可点</span></div>
+      <div class="menubtn">退出游戏<span class="tag">点击后二次确认弹窗</span></div>
+      <div class="menubtn">设置<span class="tag">弹出浮层，不打断背景动画</span></div>
+    </div>
+  </div>
+  <p class="caption" style="grid-column:1/-1">背景裂镜持续播放低强度紫色呼吸光效（呼应剧情核心道具），四按钮纵向排列于左侧</p>
+
+  <div class="sectiontitle">设置浮层（点击"设置"后展示）</div>
+  <div class="panelcard">
+    <h3>音频</h3>
+    <div class="row"><span>BGM音量</span><span class="ctrl"><div class="slider"><div class="fill" style="width:70%"></div></div></span></div>
+    <div class="row"><span>音效音量</span><span class="ctrl"><div class="slider"><div class="fill" style="width:80%"></div></div></span></div>
+    <div class="row"><span>配音音量</span><span class="ctrl"><div class="slider"><div class="fill" style="width:100%"></div></div></span></div>
+  </div>
+  <div class="panelcard">
+    <h3>显示</h3>
+    <div class="row"><span>文字速度</span><span class="radio3"><span>慢</span><span class="on">中</span><span>快</span></span></div>
+    <div class="row"><span>镜像滤镜强度</span><span class="radio3"><span class="on">标准</span><span>减弱</span><span>关闭</span></span></div>
+    <div class="row"><span>画面特效</span><span class="ctrl">待补充（待定平台后细化）</span></div>
+  </div>
+  <div class="panelcard" style="grid-column:1/-1">
+    <h3>存档管理</h3>
+    <div class="row"><span>当前进度：第3章·庆功宴（S3-2）</span><span class="ctrl">上次游玩 2026-11-13</span></div>
+    <div class="row"><span>清除存档</span><span class="ctrl">按钮 + 二次确认弹窗</span></div>
+  </div>
+
+  <div class="sectiontitle">两处二次确认弹窗</div>
+  <div class="dialog">
+    <p>开始新游戏将覆盖当前进度，是否继续？</p>
+    <div class="dialogbtns"><div class="dbtn">取消</div><div class="dbtn primary">确认</div></div>
+  </div>
+  <div class="dialog">
+    <p>确定要退出游戏吗？</p>
+    <div class="dialogbtns"><div class="dbtn">取消</div><div class="dbtn primary">确认退出</div></div>
+  </div>
+
+  <div class="sectiontitle">按钮跳转逻辑速览</div>
+  <div class="flowrow">
+    <div class="fnode purple">开始游戏</div><span class="arrow">→ 确认覆盖 →</span><div class="fnode">重置全部变量</div><span class="arrow">→</span><div class="fnode">S1-1</div>
+  </div>
+  <div class="flowrow">
+    <div class="fnode purple">继续游戏</div><span class="arrow">→ 读取存档 →</span><div class="fnode">current_node_id</div><span class="arrow">→</span><div class="fnode">跳转至该节点</div>
+  </div>
+  <div class="flowrow">
+    <div class="fnode coral">退出游戏</div><span class="arrow">→ 二次确认 →</span><div class="fnode">静默存档一次</div><span class="arrow">→</span><div class="fnode">关闭程序</div>
+  </div>
+
+</div>
+
+</body>
+</html>

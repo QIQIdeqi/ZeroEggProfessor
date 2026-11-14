@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>《如果》暂停菜单线框图</title>
+<style>
+  :root{
+    --bg2:#f1efe8; --text:#2c2c2a; --text2:#5f5e5a; --text3:#888780;
+    --border:#d3d1c7; --radius:12px;
+    --purple-50:#eeedfe; --purple-600:#534ab7; --purple-800:#3c3489;
+    --coral-50:#faece7; --coral-600:#993c1d;
+  }
+  *{box-sizing:border-box}
+  body{font-family:"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg2);color:var(--text);margin:0;padding:2rem;line-height:1.6}
+  h1{font-size:16px;font-weight:500;margin:0 0 4px}
+  p.sub{font-size:13px;color:var(--text2);margin:0 0 1.5rem}
+  .layout{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:1100px;margin:0 auto}
+  .sectiontitle{font-size:14px;font-weight:500;margin:1.8rem 0 10px;grid-column:1 / -1;border-left:4px solid var(--purple-600);padding-left:10px}
+  .scene{background:#2a2438;border-radius:var(--radius);border:0.5px solid var(--border);aspect-ratio:16/9;position:relative;overflow:hidden;grid-column:1/-1}
+  .scenebg{position:absolute;inset:0;background:linear-gradient(135deg,#352b4a,#231c33)}
+  .dim{position:absolute;inset:0;background:rgba(0,0,0,0.55)}
+  .dialoguebar{position:absolute;left:30px;right:30px;bottom:24px;background:rgba(20,16,30,0.9);border:0.5px solid rgba(255,255,255,0.15);border-radius:8px;padding:10px 14px;color:#eceaff;font-size:12px}
+  .pauseicon{position:absolute;top:18px;right:18px;width:28px;height:28px;border-radius:6px;background:rgba(255,255,255,0.12);border:0.5px solid rgba(255,255,255,0.3);display:flex;align-items:center;justify-content:center;color:#eceaff;font-size:13px}
+  .pausecard{position:absolute;top:50%;right:60px;transform:translateY(-50%);width:200px;background:rgba(15,12,24,0.92);border:0.5px solid rgba(255,255,255,0.2);border-radius:var(--radius);padding:14px;z-index:3}
+  .pausecard .item{font-size:12.5px;color:#eceaff;padding:9px 10px;border-radius:7px;margin-bottom:6px;border:0.5px solid rgba(255,255,255,0.12)}
+  .pausecard .item.top{background:rgba(155,143,240,0.22);border-color:#9b8ff0;font-weight:500}
+  .pausecard .item .tag{display:block;font-size:10.5px;color:#b9b2f2;margin-top:2px}
+  .panelcard{background:#fff;border:0.5px solid var(--border);border-radius:var(--radius);padding:1rem 1.2rem}
+  .panelcard h3{font-size:13px;font-weight:500;margin:0 0 10px;border-left:3px solid var(--purple-600);padding-left:8px}
+  .backlogitem{font-size:12px;padding:8px 0;border-bottom:0.5px dashed var(--border)}
+  .backlogitem:last-child{border-bottom:none}
+  .backlogitem .who{color:var(--purple-800);font-weight:500;margin-right:6px}
+  .backlogitem .mirrortag{font-size:10px;color:var(--purple-600);background:var(--purple-50);border-radius:999px;padding:1px 6px;margin-left:6px}
+  .flowrow{grid-column:1/-1;display:flex;gap:10px;flex-wrap:wrap;align-items:center;font-size:12px;color:var(--text2)}
+  .fnode{padding:6px 12px;border-radius:999px;border:0.5px solid var(--border);background:#fff}
+  .fnode.purple{background:var(--purple-50);border-color:var(--purple-600);color:var(--purple-800)}
+  .fnode.coral{background:var(--coral-50);border-color:var(--coral-600);color:var(--coral-600)}
+  .arrow{color:var(--text3)}
+  .caption{font-size:12px;color:var(--text2);text-align:center;margin-top:8px;grid-column:1/-1}
+</style>
+</head>
+<body>
+
+<h1>《如果》暂停菜单线框图 — 低保真交互原型</h1>
+<p class="sub">依据《如果-暂停菜单设计案.md》绘制，展示游玩中呼出暂停菜单、下钻回看文本/设置的层级关系，非最终美术稿。</p>
+
+<div class="layout">
+
+  <div class="sectiontitle">游玩中呼出暂停菜单（场景变暗+遮罩，不切场景）</div>
+  <div class="scene">
+    <div class="scenebg"></div>
+    <div class="dim"></div>
+    <div class="pauseicon">⏸</div>
+    <div class="dialoguebar">沈知行："我每一次，都只是选了'先缓一缓'。"</div>
+    <div class="pausecard">
+      <div class="item top">继续游玩<span class="tag">关闭浮层，遮罩淡出，剧情继续</span></div>
+      <div class="item">回看文本<span class="tag">下钻子浮层，只读历史记录</span></div>
+      <div class="item">设置<span class="tag">复用主界面同一套设置组件</span></div>
+      <div class="item">返回主界面<span class="tag">二次确认，确认前静默存档</span></div>
+      <div class="item">退出游戏<span class="tag">二次确认，确认前静默存档</span></div>
+    </div>
+  </div>
+  <p class="caption">右上角暂停图标常驻可点；暂停菜单半透明黑色遮罩，区别于设置浮层的白色卡片风格</p>
+
+  <div class="sectiontitle">下钻一层：回看文本（Backlog）子浮层</div>
+  <div class="panelcard">
+    <h3>回看文本 — 只读，不可跳转重玩</h3>
+    <div class="backlogitem"><span class="who">林野：</span>大雨天，系统有极小概率认错路人。</div>
+    <div class="backlogitem"><span class="who">沈知行：</span>先别发到全公司群里，吓到人没必要。</div>
+    <div class="backlogitem"><span class="who">镜中沈知行：</span>发到群里。所有人都要知道。<span class="mirrortag">镜像回放</span></div>
+    <div class="backlogitem"><span class="who">沈知行：</span>我每一次，都只是选了"先缓一缓"。</div>
+    <p style="font-size:11px;color:#888780;margin:10px 0 0">顶部固定"返回"按钮 → 回到暂停菜单（不是直接回到游戏）</p>
+  </div>
+
+  <div class="sectiontitle">下钻一层：设置（复用主界面组件，不重复定义）</div>
+  <div class="panelcard">
+    <h3>设置浮层 — 与主界面入口完全一致</h3>
+    <p style="font-size:12px;color:#5f5e5a">音频（BGM/音效/配音音量）、显示（文字速度/镜像滤镜强度/画面特效）、存档管理（当前进度/清除存档）三分区，详见《如果-主界面交互设计案.md》第4节，这里不重复展示。</p>
+  </div>
+
+  <div class="sectiontitle">层级与存档关系速览</div>
+  <div class="flowrow">
+    <div class="fnode purple">游戏画面</div><span class="arrow">→ 点击暂停图标 →</span><div class="fnode purple">暂停菜单</div><span class="arrow">→ 下钻 →</span><div class="fnode">回看文本 / 设置</div><span class="arrow">→ 返回 →</span><div class="fnode purple">暂停菜单</div>
+  </div>
+  <div class="flowrow">
+    <div class="fnode coral">返回主界面 / 退出游戏</div><span class="arrow">→ 二次确认 →</span><div class="fnode">确保性静默存档</div><span class="arrow">→</span><div class="fnode">离开当前会话</div>
+  </div>
+
+</div>
+
+</body>
+</html>
